@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'https://fonts.googleapis.com/css2?family=Figtree&display=swap';
+* {
+    font-family: 'Figtree', sans-serif;
+}
+
+.search-input {
+    padding: 5px;
+}
+
+.search-input--btn {
+    padding: 5px;
+    margin: 15px 10px;
+    background-color: transparent;
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+}
+
+.display-content {
+    display: flex;
+    justify-content: center;
+}

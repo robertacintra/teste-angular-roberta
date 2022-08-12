@@ -1,0 +1,13 @@
+<div class="user-card">
+    <div class="user-card--image">
+        <img [src]="user.picture?.large" alt="Foto do usuário">
+    </div>
+    <div class="user-card--info">
+
+        <p class="user-card--info--text">{{ user.name.first }}</p>
+        <p class="user-card--info--text">{{ user.name.last }}</p>
+
+        <p class="user-card--info--email">{{ user.email }}</p>
+
+    </div>
+</div>

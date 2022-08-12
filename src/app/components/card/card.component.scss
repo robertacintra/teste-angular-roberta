@@ -1,0 +1,17 @@
+.user-card {
+    display: flex;
+    justify-content: center;
+    &--image {
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    &--info {
+        color: silver;
+        font-size: 14px;
+        padding-top: 10px;
+        &--text {
+            padding: 2px;
+            display: inline;
+        }
+    }
+}

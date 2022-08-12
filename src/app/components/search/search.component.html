@@ -1,32 +1,39 @@
 <div class="display-search">
     <h2 class="title">Pesquisa de Usuários</h2>
-    <h3>Gênero:</h3>
-    <form>
-        <input type="radio" id="gender-masc" name="gender" vakue="Masculino"> <label for="gender-masc">Masculino</label>
-        <input type="radio" id="gender-fem" name="gender" vakue="Feminino"> <label for="gender-fem">Feminino</label>
-        <input type="radio" id="gender-all" name="gender" vakue="Ambos"> <label for="gender-all">Ambos</label>
-    </form>
 
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="formulario">
+
+        <div class="gender__box">
+            <h3>Gênero:</h3>
+            <div class="form-check">
+                <label class="form-check-label" for="gender">
+                    <div id="gender" class="row">
+                        <div *ngFor="let item of listGender">
+                            <label for="{{item.valor}}" class="radio-inline">
+                                <input class="form-check-input" [value]="item.valor" type="radio" id="{{item.valor}}"
+                                    name="gender" ngModel required>
+                                {{item.nome}}
+                            </label>
+            </div>
+        </div>
+        </label>
+</div>
+<span class="text-center text-danger p-3" *ngIf="error">
+                Selecione uma opção
+            </span>
+</div>
+
+<div class="country__box">
     <h3>Nacionalidade:</h3>
-    <form>
-        <input type="checkbox" id="australia" name="australia" value="Australia">
-        <label for="australia">Austrália</label>
-
-        <input type="checkbox" id="brasil" name="brasil" value="Brasil">
-        <label for="brasil">Brasil</label>
-
-        <input type="checkbox" id="canada" name="canada" value="Canada">
-        <label for="canada">Canadá</label>
-
-        <input type="checkbox" id="france" name="france" value="France">
-        <label for="australia">França</label>
-
-        <input type="checkbox" id="usa" name="usa" value="USA">
-        <label for="usa">EUA</label>
-    </form>
-
-    <div class="search-input">
-        <input type="button" value="Pesquisar" class="search-input--btn" [routerLink]="['/view']">
-        <input type="button" value="Carregar última pesquisa salva" class="search-input--btn">
+    <div *ngFor="let item of listCountry" class="p-1">
+        <input type="checkbox" id="{{item.valor}}" name={{item.valor}} ngModel>
+        <label for="{{item.valor}}">{{item.nome}}</label>
     </div>
+
+</div>
+<div class="search-input">
+    <button type="submit" class="btn button__dados">Pesquisar</button>
+</div>
+</form>
+
 </div>

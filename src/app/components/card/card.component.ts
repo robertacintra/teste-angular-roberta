@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -7,11 +7,85 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  @Input() user: any;
-  
-  constructor() { }
+  // @Input() user: any;
 
-  ngOnInit(): void {
+  countryList = [];
+  genderList = [];
+  listUsers = [];
+  listUserSearch = [];
+
+
+  searchResult: any;
+  users: any;
+  saveSearch: any;
+
+  error = false;
+  saveSearchResult = false;
+  loading = false;
+
+  //erro
+  erroApi: boolean = false;
+
+  constructor(private userService:UserService){
+    console.log(userService);
   }
 
+  ngOnInit(): void {
+    this.countryList = this.userService.getCountryList();
+    this.genderList = this.userService.getGenderList();
+  }
+  
+  onSubmit(form) {
+
+    if (!form.valid) {
+      return this.error = true
+    }
+
+    this.searchResult = form.value;
+    console.log(this.searchResult);
+
+    this.listUserSearch = Object.keys(this.searchResult).map(key => ({
+      type: key,
+      value: this.searchResult[key]
+    }))
+
+    this.loading = true;
+    this.userService.filterSearch(this.filtersResult())
+      .subscribe(response => {
+        this.loading = false;
+        this.users = response;
+        this.listUsers = this.users.results;
+      },
+        error => {
+          this.loading = false;
+          this.erroApi = true;
+        }
+      )
+
+      if(form.submitted){
+        form.reset()
+      }
+  }
+
+
+  filtersResult() {
+    let filtro = '';
+    if (this.listUserSearch[0].value !== '') {
+      filtro = filtro + '&gender=' + this.listUserSearch[0].value;
+    }
+    let countryResult = false
+    for (let i = 1; i < this.listUserSearch.length; i++) {
+      if (this.listUserSearch[i].value) {
+        filtro = filtro + (countryResult ? `,${this.listUserSearch[i].type}` : `&nat=${this.listUserSearch[i].type}`)
+        countryResult = true;
+      }
+
+    }
+    return filtro
+  }
+  
+  onClick(event) {
+    this.saveSearchResult = !this.saveSearchResult
+    this.saveSearch = sessionStorage.setItem('listUsers', JSON.stringify(this.listUsers));
+  }
 }

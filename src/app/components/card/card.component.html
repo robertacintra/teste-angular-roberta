@@ -1,13 +1,28 @@
 <div class="user-card">
-    <div class="user-card--image">
-        <img [src]="user.picture?.large" alt="Foto do usuário">
+    <div class="spinner-border" role="status" *ngIf="loading">
+        <span class="visually-hidden">Loading...</span>
     </div>
-    <div class="user-card--info">
-
-        <p class="user-card--info--text">{{ user.name.first }}</p>
-        <p class="user-card--info--text">{{ user.name.last }}</p>
-
-        <p class="user-card--info--email">{{ user.email }}</p>
-
+    <div *ngIf="erroApi">
+        <h2>Error </h2>
     </div>
+    <div *ngFor="let item of listUsers">
+        <div class="user-card--image">
+            <img [src]="item.picture.large" alt="Foto do usuário">
+        </div>
+        <div class="user-card--info">
+
+            <p class="user-card--info--text">{{ item.name.first }}</p>
+            <p class="user-card--info--text">{{ item.name.last }}</p>
+            <p>{{item.gender}}</p>
+            <p class="user-card--info--text">{{item.location.country}}</p>
+            <p class="user-card--info--email">{{ item.email }}</p>
+
+        </div>
+    </div>
+</div>
+
+<div class="box__button-salvar">
+    <button type="click" (click)="onClick('&event')" class="btn button__salvar">Salvar dados</button>
+
+    <h3 class="text-center p-3" name="salvaPsquisa" *ngIf='saveSearchResult'>Pesquisa salva</h3>
 </div>

@@ -4,10 +4,10 @@
             <div class="">
                 <div class="">
                     <div class="card-test">
-                        <app-card [user]="user" *ngIf="user; else loadingBlock"></app-card>
+                        <app-card></app-card>
 
                         <div class="search-input display-content">
-                            <button (click)="saveData()" class="search-input--btn">Salvar Pesquisa</button>
+                            <button class="search-input--btn">Salvar Pesquisa</button>
                             <input type="button" value="Voltar" class="search-input--btn" [routerLink]="['/search']">
                         </div>
 

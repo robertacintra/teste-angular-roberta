@@ -5,10 +5,29 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-  private _url:string="https://randomuser.me/api/"
   constructor(private http:HttpClient) { }
 
-  getUser(){
-    return this.http.get<any>(this._url);
+  filterSearch(value: any){
+    return this.http.get(`https://randomuser.me/api/?results=20${value}`)
   }
+  getSearch(){
+    return this.http.get('https://randomuser.me/api?results=20');
+  }
+
+  getGenderList(){
+    return [
+       {'name': 'Masculino', 'value': 'male'},
+       {'name': 'Feminino', 'value': 'female'},
+       {'name': 'Ambos', 'value': 'ambos'}
+      ]
+   }
+   getCountryList(){
+     return [
+       {'name': 'Austrália', 'value': 'australia'},
+       {'name': 'Brasil', 'value': 'brazil'},
+       {'name': 'Canadá', 'value': 'canada'},
+       {'name': 'França', 'value': 'france'},
+       {'name': 'Estados Unidos', 'value': 'usa'} 
+     ]
+   }
 }

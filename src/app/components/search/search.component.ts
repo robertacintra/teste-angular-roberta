@@ -11,8 +11,4 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  getData(){
-    return sessionStorage.getItem('name');
-  }
 }

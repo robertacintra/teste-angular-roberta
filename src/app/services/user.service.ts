@@ -16,18 +16,18 @@ export class UserService {
 
   getGenderList(){
     return [
-       {'name': 'Masculino', 'value': 'male'},
-       {'name': 'Feminino', 'value': 'female'},
-       {'name': 'Ambos', 'value': 'ambos'}
+       {'nome': 'Masculino', 'valor': 'male'},
+       {'nome': 'Feminino', 'valor': 'female'},
+       {'nome': 'Ambos', 'valor': 'ambos'}
       ]
    }
    getCountryList(){
      return [
-       {'name': 'Austrália', 'value': 'australia'},
-       {'name': 'Brasil', 'value': 'brazil'},
-       {'name': 'Canadá', 'value': 'canada'},
-       {'name': 'França', 'value': 'france'},
-       {'name': 'Estados Unidos', 'value': 'usa'} 
+       {'nome': 'Austrália', 'valor': 'australia'},
+       {'nome': 'Brasil', 'valor': 'brazil'},
+       {'nome': 'Canadá', 'valor': 'canada'},
+       {'nome': 'França', 'valor': 'france'},
+       {'nome': 'Estados Unidos', 'valor': 'usa'} 
      ]
    }
 }

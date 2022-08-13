@@ -1,13 +1,54 @@
+<div class="display-search">
+    <h2 class="title">Pesquisa de Usuários</h2>
+
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+        <div class="gender__box">
+            <h3>Gênero:</h3>
+            <div>
+                <label for="gender">
+                    <div id="gender" class="row">
+                        <div *ngFor="let item of genderList">
+                            <label for="{{item.}}" class="radio-inline">
+                                <input [value]="item.valor" type="radio" id="{{item.valor}}"
+                                    name="gender" ngModel required>
+                                {{item.nome}}
+                            </label>
+            </div>
+        </div>
+        </label>
+
+</div>
+
+<span class="text-error" *ngIf="error">Por favor, selecione uma opção.</span>
+
+</div>
+
+<div class="country__box">
+    <h3>Nacionalidade:</h3>
+    <div *ngFor="let item of listCountry">
+        <input type="checkbox" id="{{item.valor}}" name={{item.valor}} ngModel>
+        <label for="{{item.valor}}">{{item.nome}}</label>
+    </div>
+
+</div>
+<div class="search-input">
+    <button type="submit" class="search-input--btn">Pesquisar</button>
+</div>
+</form>
+
+</div>
+
 <div class="user-card">
     <div class="spinner-border" role="status" *ngIf="loading">
-        <span class="visually-hidden">Carregando...</span>
+        <span class="hidden">Carregando...</span>
     </div>
     <div *ngIf="erroApi">
-        <h2>Error </h2>
+        <h2>Error</h2>
     </div>
     <div *ngFor="let item of listUsers">
         <div class="user-card--image">
-            <img [src]="item.picture.large" alt="Foto do usuário">
+            <img src="{{item.picture.large}}" alt="Foto do usuário">
         </div>
         <div class="user-card--info">
 
@@ -24,5 +65,34 @@
 <div class="box__button-salvar">
     <button type="click" (click)="onClick('&event')" class="btn button__salvar">Salvar dados</button>
 
-    <h3 class="text-center p-3" name="salvaPsquisa" *ngIf='saveSearchResult'>Pesquisa salva</h3>
+    <h3 class="text-center p-3" name="saveSearchResult" *ngIf='saveSearchResult'>Pesquisa salva</h3>
+</div>
+
+<div class="display-view">
+    <div>
+        <div class="">
+            <div class="">
+                <div class="">
+                    <div class="card-test">
+                        <app-card></app-card>
+
+                        <div class="search-input display-content">
+                            <button class="search-input--btn">Salvar Pesquisa</button>
+                            <input type="button" value="Voltar" class="search-input--btn" [routerLink]="['/search']">
+                        </div>
+
+                        <ng-template #loadingBlock>
+                            <div>
+                                <div role="status">
+                                    <div>
+                                        <p>Carregando....</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

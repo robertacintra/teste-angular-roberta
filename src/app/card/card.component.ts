@@ -21,7 +21,7 @@ export class CardComponent implements OnInit {
   //erro
   erroApi: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService) { }
   
   ngOnInit(): void {
     this.genderList = this.userService.getGenderList();

@@ -1,6 +1,14 @@
 .user-card {
-    display: flex;
     justify-content: center;
+    
+    flex-wrap: wrap;
+    &--box {
+        border: solid #f2f2f2;
+        margin: 15px 0 0 10px;
+        padding: 5px;
+        display: flex;
+
+    }
 
     &--image {
         margin-right: 10px;
@@ -8,20 +16,28 @@
     }
 
     &--info {
-        color: silver;
+        color: rgb(37, 37, 37);
         font-size: 14px;
         padding-top: 10px;
 
         &--text {
         padding: 2px;
         display: inline;
+        text-transform: capitalize;
         }
+    }
+
+    &--saved {
+        // z-index: 9999;
+        // position: absolute;
+        // margin-top: 3%;
+        // padding-top: 4px;
+        color: #96d671;
     }
 }
 
 .title {
     margin-top: 0;
-    text-align: center;
 }
 
 .display-search {
@@ -38,4 +54,10 @@
 
 .hidden {
     display: none;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }

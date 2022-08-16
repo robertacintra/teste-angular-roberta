@@ -1,6 +1,4 @@
 .header {
-    max-width: 400px;
-    min-width: 350px;
     height: 50px;
     background: #eceaea;
     margin: 0;
@@ -8,7 +6,7 @@
 }
 
 .header-right {
-    min-width: max-content;
+    
     height: 50px;
     background: #F6E6E8;
     margin: 0;
@@ -21,11 +19,11 @@
     background: white;
     border-radius: 50%;
     margin-top: -13px;
-    margin-left: 25%;
+    margin-left: 5px;
 }
 
 .header-bottom {
-    min-width: max-content;
+    
     height: 20px;
     background: #f2f2f2;
     border-start-start-radius: 100%;

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'https://fonts.googleapis.com/css2?family=Figtree&display=swap';
+
 * {
     font-family: 'Figtree', sans-serif;
 }
@@ -21,7 +22,6 @@
 
 .display-content {
     display: flex;
-    justify-content: center;
 }
 
 .text-error {

@@ -1,0 +1,74 @@
+<div class="wrap">
+    
+    <div class="display-search">
+    <h2 class="title">Pesquisa de Usuários</h2>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="">
+        <h3>Gênero:</h3>
+        <div>
+            <label for="gender">
+            <div id="gender" class="row">
+                <div *ngFor="let item of genderList">
+                <label for="{{item.valor}}" class="">
+                    <input [value]="item.valor" type="radio" id="{{item.valor}}" name="gender" ngModel required>
+                    {{item.nome}}
+                </label>
+                </div>
+            </div>
+            </label>
+        </div>
+        <span class="text-error" *ngIf="error">Por favor, selecione uma opção.</span>
+        </div>
+        <div class="">
+        <h3>Nacionalidade:</h3>
+        <div *ngFor="let item of countryList">
+            <input type="checkbox" id="{{item.valor}}" name={{item.valor}} ngModel>
+            <label for="{{item.valor}}">{{item.nome}}</label>
+        </div>
+        </div>
+        <div class="">
+        <button type="submit" class="search-input--btn" [routerLink]="['/search']">Pesquisar</button>
+        </div>
+    </form>
+</div>
+    
+<div class="user-card">
+    <div class="" role="status" *ngIf="loading">
+        <span class="hidden">Carregando...</span>
+    </div>
+
+    <div *ngIf="erroApi">
+        <h2>Error</h2>
+    </div>
+
+        
+    <!-- search result -->
+    <div *ngFor="let item of listUsers" class="user-card--box">
+        <div class="user-card--image">
+            <img src="{{item.picture.large}}" alt="Foto do usuário">
+        </div>
+        <div class="user-card--info">
+            <p class="user-card--info--text">{{ item.name.first }}</p>
+            <p class="user-card--info--text">{{ item.name.last }}</p>
+            <p class="user-card--info--text">- {{item.gender}}</p>
+            <p>{{ item.location.country }}</p>
+            <p class="user-card--info--email">{{ item.email }}</p>
+        </div>
+
+        
+    </div>
+
+    <!-- save input -->
+    <div *ngIf="users">
+        <div class="card-test">
+            <div class="search-input display-content">
+                <button type="click" (click)="onClick('&event')" class="search-input--btn">Salvar Pesquisa</button>
+                    <h5 class="user-card--saved" name="saveSearchResult" *ngIf='saveSearchResult'>Pesquisa salva</h5>
+                <!-- <input type="button" value="Voltar" class="search-input--btn"> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>

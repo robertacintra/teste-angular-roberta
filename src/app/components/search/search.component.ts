@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { CardComponent } from '../card/card.component';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-search',
@@ -9,9 +7,6 @@ import { UserService } from '../services/user.service';
 })
 export class SearchComponent {
 
-  constructor() {
-    
-  
-  }
+  constructor() { }
 
 }
